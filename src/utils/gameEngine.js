@@ -121,17 +121,21 @@ export const generateEnglishQuestion = (age) => {
   const ageGroup = age <= 7 ? 5 : age <= 10 ? 8 : 11
   const questionSet = questions[ageGroup]
   
-  // Get used questions to avoid repetition
-  const usedKey = `english_used_${ageGroup}`
+  // Get used questions to avoid repetition within same session
+  const usedKey = `english_used_${ageGroup}_${new Date().toDateString()}`
   const usedQuestions = JSON.parse(localStorage.getItem(usedKey) || '[]')
   
   // Filter out used questions
   const availableQuestions = questionSet.filter((_, index) => !usedQuestions.includes(index))
   
-  // If all questions used, reset
+  // If all questions used, reset for new session
   if (availableQuestions.length === 0) {
     localStorage.removeItem(usedKey)
-    return questionSet[0]
+    const shuffled = [...questionSet].sort(() => Math.random() - 0.5)
+    const selectedQuestion = shuffled[0]
+    const originalIndex = questionSet.indexOf(selectedQuestion)
+    localStorage.setItem(usedKey, JSON.stringify([originalIndex]))
+    return selectedQuestion
   }
   
   // Pick random from available
@@ -206,17 +210,21 @@ export const generateGeographyQuestion = (age) => {
   const ageGroup = age <= 9 ? 7 : age <= 12 ? 10 : 13
   const questionSet = questions[ageGroup]
   
-  // Get used questions to avoid repetition
-  const usedKey = `geography_used_${ageGroup}`
+  // Get used questions to avoid repetition within same session
+  const usedKey = `geography_used_${ageGroup}_${new Date().toDateString()}`
   const usedQuestions = JSON.parse(localStorage.getItem(usedKey) || '[]')
   
   // Filter out used questions
   const availableQuestions = questionSet.filter((_, index) => !usedQuestions.includes(index))
   
-  // If all questions used, reset
+  // If all questions used, reset for new session
   if (availableQuestions.length === 0) {
     localStorage.removeItem(usedKey)
-    return questionSet[0]
+    const shuffled = [...questionSet].sort(() => Math.random() - 0.5)
+    const selectedQuestion = shuffled[0]
+    const originalIndex = questionSet.indexOf(selectedQuestion)
+    localStorage.setItem(usedKey, JSON.stringify([originalIndex]))
+    return selectedQuestion
   }
   
   // Pick random from available

@@ -36,7 +36,24 @@ export const generateMathProblem = (level, type = 'mixed') => {
     5: () => generateAdvanced()
   }
   
-  return problems[level] ? problems[level]() : problems[1]()
+  // Generate multiple problems and pick one that hasn't been used recently
+  const sessionKey = `math_used_${level}_${new Date().toDateString()}`
+  const usedProblems = JSON.parse(localStorage.getItem(sessionKey) || '[]')
+  
+  let attempts = 0
+  let problem
+  
+  do {
+    problem = problems[level] ? problems[level]() : problems[1]()
+    attempts++
+  } while (usedProblems.includes(problem.question) && attempts < 10)
+  
+  // Track used problems
+  usedProblems.push(problem.question)
+  if (usedProblems.length > 20) usedProblems.shift() // Keep last 20
+  localStorage.setItem(sessionKey, JSON.stringify(usedProblems))
+  
+  return problem
 }
 
 const generateBasicAddition = () => {

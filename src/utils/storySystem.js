@@ -32,11 +32,12 @@ export const STORY_CHAPTERS = {
       {
         id: 'scene2',
         title: 'The First Challenge',
-        text: 'To reach the dragon\'s lair, you must solve the Bridge Keeper\'s riddle: "I have 10 coins. I spend 3 on food and 2 on toys. How many do I have left?"',
+        text: 'The Bridge Keeper blocks your path: "A merchant starts with 15 gold coins. She buys bread for 4 coins, gives 3 coins to charity, and earns 2 coins from selling apples. How many coins does she have now?"',
         choices: [
-          { text: '5 coins', next: 'scene3', coins: 10, correct: true },
-          { text: '6 coins', next: 'scene2b', coins: 0 },
-          { text: '4 coins', next: 'scene2b', coins: 0 }
+          { text: '8 coins', next: 'scene2b', coins: 0 },
+          { text: '10 coins', next: 'scene3', coins: 10, correct: true },
+          { text: '12 coins', next: 'scene2b', coins: 0 },
+          { text: '16 coins', next: 'scene2b', coins: 0 }
         ],
         character: '🧙‍♂️',
         background: '🌉'
@@ -44,7 +45,7 @@ export const STORY_CHAPTERS = {
       {
         id: 'scene2b',
         title: 'Try Again',
-        text: 'The Bridge Keeper shakes his head. "Think carefully about subtraction. 10 - 3 - 2 = ?"',
+        text: 'The Bridge Keeper frowns. "Wrong! Remember: Start with what you have, subtract what you spend and give away, then add what you earn. Try again!"',
         choices: [
           { text: 'Let me try again', next: 'scene2', coins: 0 }
         ],
@@ -86,11 +87,12 @@ export const STORY_CHAPTERS = {
       {
         id: 'scene2',
         title: 'The Choice Challenge',
-        text: 'A Spending Sprite has $20. They want candy ($5), a toy ($15), and a book ($10). What should they buy first?',
+        text: 'A Spending Sprite has $20 for school supplies. Available: fancy pencils ($8), required textbook ($12), fun stickers ($3), calculator ($15). They can only afford two items. What\'s the smartest choice?',
         choices: [
-          { text: 'The book (educational need)', next: 'scene3', coins: 15, correct: true },
-          { text: 'The candy (want)', next: 'scene2b', coins: 0 },
-          { text: 'The toy (expensive want)', next: 'scene2b', coins: 0 }
+          { text: 'Textbook + stickers ($15)', next: 'scene3', coins: 15, correct: true },
+          { text: 'Fancy pencils + stickers ($11)', next: 'scene2b', coins: 0 },
+          { text: 'Calculator + stickers ($18)', next: 'scene2b', coins: 0 },
+          { text: 'Just the calculator ($15)', next: 'scene2b', coins: 0 }
         ],
         character: '🧚‍♀️',
         background: '🏪'
@@ -129,11 +131,12 @@ export const STORY_CHAPTERS = {
       {
         id: 'scene2',
         title: 'The Growth Question',
-        text: 'If you save $10 and it grows by $1 each month, how much will you have after 3 months?',
+        text: 'Saver Sam explains: "You start with $50. Each month, you add $10 and the account grows by 10% of the total. After 2 months, how much do you have?" (Calculate month by month)',
         choices: [
-          { text: '$13 (10 + 1 + 1 + 1)', next: 'scene3', coins: 20, correct: true },
-          { text: '$11', next: 'scene2b', coins: 0 },
-          { text: '$30', next: 'scene2b', coins: 0 }
+          { text: '$70', next: 'scene2b', coins: 0 },
+          { text: '$76', next: 'scene3', coins: 20, correct: true },
+          { text: '$80', next: 'scene2b', coins: 0 },
+          { text: '$66', next: 'scene2b', coins: 0 }
         ],
         character: '🧭',
         background: '🌳'

@@ -26,8 +26,10 @@ function MissionCard({ mission, isCompleted, onComplete, onUncomplete, kidAge, c
   
   const handleComplete = () => {
     try {
-      if (showNotes && !notes.trim()) {
-        throw new AppError('Please add notes about what you did', 'VALIDATION_ERROR')
+      if (!notes.trim()) {
+        alert('Please add notes about what you did to complete this mission!')
+        setShowNotes(true)
+        return
       }
       onComplete(notes.trim())
       setNotes('')
@@ -37,7 +39,7 @@ function MissionCard({ mission, isCompleted, onComplete, onUncomplete, kidAge, c
     }
   }
   
-  const canComplete = !showNotes || (showNotes && notes.trim().length > 0)
+  const canComplete = notes.trim().length > 0
 
   return (
     <div>
@@ -172,8 +174,8 @@ function MissionCard({ mission, isCompleted, onComplete, onUncomplete, kidAge, c
               resize: 'vertical'
             }}
           />
-          <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>
-            Optional: Add notes about how you completed this mission
+          <div style={{ marginTop: '8px', fontSize: '12px', color: '#d32f2f', fontWeight: 'bold' }}>
+            Required: Explain how you completed this mission
           </div>
         </div>
         )
