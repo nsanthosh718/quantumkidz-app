@@ -274,18 +274,7 @@ function UniversalGame() {
         </div>
       )}
 
-      <div style={{ marginTop: '20px', display: 'flex', gap: '12px', justifyContent: 'center' }}>
-        <Link to={`/games/${kidId}`}>
-          <button className="btn btn-secondary">
-            ← Back to Games
-          </button>
-        </Link>
-        <Link to={`/dashboard/${kidId}`}>
-          <button className="btn btn-secondary">
-            ← Back to Dashboard
-          </button>
-        </Link>
-      </div>
+
       </div>
     </div>
   )
